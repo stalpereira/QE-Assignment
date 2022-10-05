@@ -38,7 +38,7 @@ const App: React.FC = () => {
   const checkAnswer = (data: any) => {
     if (!gameOver) {
       const answer = data;
-      const correct = questions[number].correct_answer === answer;
+      const correct = questions[number].correct_answer.toLowerCase().trim() === answer.toLowerCase().trim();
       if (correct) {
         setScore((prev) => prev + 1);
         setAnswerCorrect(true);

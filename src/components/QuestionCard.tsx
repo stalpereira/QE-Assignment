@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // Types
 import { AnswerObject } from '../App';
 // Styles
@@ -13,11 +13,11 @@ type Props = {
   totalQuestions: number;
 };
 
-let checkAnswer: any;
+let typedAnswer: any;
 const getValue = async(question: any) => {
   const input = document.getElementById('typedAnswer') as HTMLInputElement | null;
   const value = input?.value;
-  checkAnswer = value;
+  typedAnswer = value;
 }  
 
 const QuestionCard: React.FC<Props> = ({
@@ -46,7 +46,7 @@ const QuestionCard: React.FC<Props> = ({
         </ButtonWrapper>
       ))}
       <input type='text' id="typedAnswer" name="typedAnswer" placeholder="Type your answer here" defaultValue="" onChange={(question)=>getValue(question)} style={{margin:"5px", borderRadius:"10px", height: "37px"}} />
-      <button className='next' onClick={()=>callback(checkAnswer)} disabled={userAnswer ? true : false}>
+      <button className='next' onClick={()=>callback(typedAnswer)} disabled={userAnswer ? true : false}>
             Submit
           </button>
     </div>
